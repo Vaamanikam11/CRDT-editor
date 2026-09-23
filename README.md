@@ -85,9 +85,9 @@ The cloud target is intentionally not selected yet. AWS ECS, Render, and Fly.io 
 
 ### Render
 
-The repository includes `render.yaml` for a Render Blueprint. It creates a private Docker server, a public nginx client, and a managed PostgreSQL database. Deploy it from the Render dashboard by selecting **New > Blueprint**, connecting this repository, and choosing `render.yaml`. Render will provide the database connection string and private server host to the services automatically.
+The repository includes `render.yaml` for a Render Blueprint. It creates Free Docker web services for the server and nginx client, plus a managed PostgreSQL database. Deploy it from the Render dashboard by selecting **New > Blueprint**, connecting this repository, and choosing `render.yaml`. Render provides the database connection string and server's public hostname automatically.
 
-The `starter` service plans and `basic-256mb` database plan are conservative defaults; adjust them in `render.yaml` to match the account and portfolio budget.
+The Free PostgreSQL tier is limited to 1 GB and expires after 30 days. Free web services can spin down after inactivity, so the first request after idle may be slow. Upgrade the `plan` values in `render.yaml` when you need persistent production service.
 
 ## Requirements
 

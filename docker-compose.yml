@@ -19,6 +19,7 @@ services:
     environment:
       DOLLAR: '$'
       SERVER_HOST: server
+      SERVER_SCHEME: http
       SERVER_PORT: 3000
     ports:
       - '8080:80'

@@ -1,10 +1,11 @@
 services:
-  - type: pserv
+  - type: web
     name: crdt-editor-server
     runtime: docker
     dockerfilePath: ./server/Dockerfile
     dockerContext: .
-    plan: starter
+    plan: free
+    healthCheckPath: /health
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -18,23 +19,22 @@ services:
     runtime: docker
     dockerfilePath: ./client/Dockerfile
     dockerContext: .
-    plan: starter
+    plan: free
     envVars:
       - key: DOLLAR
         value: '$'
       - key: SERVER_HOST
         fromService:
-          type: pserv
+          type: web
           name: crdt-editor-server
-          property: host
+          envVarKey: RENDER_EXTERNAL_HOSTNAME
+      - key: SERVER_SCHEME
+        value: https
       - key: SERVER_PORT
-        fromService:
-          type: pserv
-          name: crdt-editor-server
-          property: port
+        value: '443'
 
 databases:
   - name: crdt-editor-db
-    plan: basic-256mb
+    plan: free
     databaseName: crdt_editor
     user: crdt
