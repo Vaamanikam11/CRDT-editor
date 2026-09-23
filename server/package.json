@@ -1,0 +1,27 @@
+{
+  "name": "@crdt-editor/server",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/index.ts",
+    "lint": "eslint src",
+    "start": "node dist/index.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@crdt-editor/shared": "0.1.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "pg": "^8.23.0",
+    "socket.io": "^4.8.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/pg": "^8.23.1",
+    "socket.io-client": "^4.8.3",
+    "tsx": "^4.19.3"
+  }
+}

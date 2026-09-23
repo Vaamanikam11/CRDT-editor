@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Space Grotesk', sans-serif;
+  color: #17231d;
+  background: #e7efe7;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 85% 8%, #f4c86d 0, transparent 22rem),
+    linear-gradient(135deg, #e7efe7 0%, #cadbce 100%);
+}
+button,
+textarea {
+  font: inherit;
+}
+.editor-shell {
+  max-width: 1180px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 4.5rem 6vw 3rem;
+}
+.topbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+.eyebrow {
+  margin: 0 0 0.7rem;
+  color: #19704b;
+  font:
+    500 0.75rem 'DM Mono',
+    monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(2.7rem, 7vw, 5.8rem);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+.connection {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(23, 35, 29, 0.18);
+  color: #52645a;
+  font:
+    500 0.74rem 'DM Mono',
+    monospace;
+  text-transform: uppercase;
+}
+.connection-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #c78c24;
+}
+.connection-connected .connection-dot {
+  background: #19704b;
+}
+.connection-unavailable .connection-dot,
+.connection-disconnected .connection-dot {
+  background: #a33c2e;
+}
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  gap: 1rem;
+  align-items: stretch;
+}
+.editor-panel,
+.presence-panel {
+  border: 1px solid rgba(23, 35, 29, 0.18);
+  background: rgba(250, 252, 247, 0.72);
+  box-shadow: 0 1.5rem 4rem rgba(42, 71, 51, 0.08);
+}
+.editor-panel {
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+}
+.panel-meta,
+.editor-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  color: #65736a;
+  font:
+    0.72rem 'DM Mono',
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.panel-meta {
+  border-bottom: 1px solid rgba(23, 35, 29, 0.12);
+}
+.editor-panel textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 420px;
+  resize: none;
+  padding: 2.3rem 2.5rem;
+  border: 0;
+  outline: 0;
+  color: #17231d;
+  background: transparent;
+  font:
+    400 clamp(1.15rem, 2vw, 1.55rem)/1.65 'Space Grotesk',
+    sans-serif;
+}
+.editor-panel textarea::placeholder {
+  color: #9aa89d;
+}
+.editor-footer {
+  border-top: 1px solid rgba(23, 35, 29, 0.12);
+}
+.presence-panel {
+  min-height: 260px;
+  align-self: start;
+}
+.member-list {
+  padding: 0.4rem 1rem 1.1rem;
+}
+.member {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(23, 35, 29, 0.1);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+}
+.member-swatch {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: #19704b;
+}
+.member-name {
+  overflow: hidden;
+  flex: 1;
+  text-overflow: ellipsis;
+}
+.member-position {
+  color: #87958a;
+}
+.cursor-rail {
+  position: relative;
+  height: 3.5rem;
+  margin: 1.5rem 1rem 1rem;
+  border-top: 2px solid #d2ddd3;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent calc(20% - 1px),
+    #d2ddd3 20%
+  );
+}
+.cursor-marker {
+  position: absolute;
+  top: -0.45rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid #f8fbf5;
+  border-radius: 50%;
+  background: #c26043;
+  box-shadow: 0 0 0 1px #c26043;
+  transform: translateX(-50%);
+}
+.error {
+  margin: 1rem 0 0;
+  color: #a33c2e;
+  font-family: 'DM Mono', monospace;
+}
+@media (max-width: 760px) {
+  .editor-shell {
+    padding: 2.5rem 1rem;
+  }
+  .topbar {
+    align-items: start;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+  .editor-panel {
+    min-height: 68vh;
+  }
+  .presence-panel {
+    min-height: 0;
+  }
+}
